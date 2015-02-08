@@ -1,0 +1,25 @@
+function checkLength(e, minLength) {
+	var el, elMsg;
+	if (!e) {
+		e = window.event;
+	};
+	el = e.target || e.srcElement;
+	elMsg = el.nextSibling;
+
+	if (el.value.length < minLength) {
+		el.elMsg.innerHTML = 'Username must be ' + minLength + ' chracters or more';
+	} else {
+		elMsg.innerHTML = '';
+	}
+}
+
+var elUsername = document.getElementById('username');
+if (elUsername.addEventListener) {
+	elUsername.addEventListener('blur', function(e) {
+		checkUsername(e, 5);
+	}, false);
+} else {
+	elUsername.attachEvent('onblur', function(e) {
+		checkUsername(e, 5);
+	});
+}
